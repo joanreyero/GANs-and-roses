@@ -21,6 +21,12 @@ def parse():
     
     parser.add_argument('--display_winsize', type=int, default=256, help='display window size for both visdom and HTML')
     parser.add_argument('--display_id', type=int, default=1, help='window id of the web display')
+    parser.add_argument('--display_port', type=int, default=8097, help='visdom port of the web display')
+    parser.add_argument('--display_ncols', type=int, default=4, help='if positive, display all images in a single visdom web panel with certain number of images per row.')
+    parser.add_argument('--display_server', type=str, default="http://localhost", help='visdom server of the web display')
+
+
+    
     parser.add_argument('--load_size', type=int, default=286, help='scale images to this size')
     parser.add_argument('--crop_size', type=int, default=256, help='then crop to this size')
     parser.add_argument('--max_dataset_size', type=int, default=float("inf"), help='Maximum number of samples allowed per dataset. If the dataset directory contains more than max_dataset_size, only a subset is loaded.')
@@ -38,6 +44,7 @@ def parse():
                         help='freq of saving')
 
     # TODO: Try to simplify save
+    parser.add_argument('--dataset_mode', type=str, default='unaligned', help='chooses how datasets are loaded. [unaligned | aligned | single | colorization]')
     parser.add_argument('--save_by_iter', action='store_true', 
                         help='save model by iter?')
     parser.add_argument('--continue_train', action='store_true', 

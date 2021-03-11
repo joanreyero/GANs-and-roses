@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     model = CycleGANTrain(config)      # create a model given opt.model and other options
     model.setup()               # regular setup: load and print networks; create schedulers
-    visualizer = Visualizer(opt)   # create a visualizer that display/save images and plots
+    visualizer = Visualizer(config)   # create a visualizer that display/save images and plots
     total_iters = 0                # the total number of training iterations
 
     for epoch in range(config.epoch_count, config.n_epochs + config.n_epochs_decay + 1):    # outer loop for different epochs; we save the model by <epoch_count>, <epoch_count>+<save_latest_freq>

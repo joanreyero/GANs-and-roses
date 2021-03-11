@@ -47,6 +47,7 @@ if __name__ == '__main__':
     config.display_id = -1   # no visdom display; the test code saves the results to a HTML file.
     config.dataset_mode = 'single'
     config.phase = 'test'
+    config.isTrain = False
     
     opt.dataset_mode = 'single'
     opt.num_threads = 0 
