@@ -71,15 +71,12 @@ class CycleGANModel(BaseModel):
         # The naming is different from those used in the paper.
         # Code (vs. paper): G_A (G), G_B (F), D_A (D_Y), D_B (D_X)
         self.netG_A = networks.define_G(gpu_ids=self.gpu_ids)
-        print('\nnOPT\n')
-        print(self.netG_A)
         self.netG_B = networks.define_G(gpu_ids=self.gpu_ids)
 
         if self.isTrain:  # define discriminators
-            self.netD_A = networks.define_D(opt.output_nc, opt.ndf, opt.netD,
-                                            opt.n_layers_D, opt.norm, opt.init_type, opt.init_gain, self.gpu_ids)
-            self.netD_B = networks.define_D(opt.input_nc, opt.ndf, opt.netD,
-                                            opt.n_layers_D, opt.norm, opt.init_type, opt.init_gain, self.gpu_ids)
+            
+            self.netD_A = networks.define_D(gpu_ids=self.gpu_ids)
+            self.netD_B = networks.define_D(gpu_ids=self.gpu_ids)
 
         if self.isTrain:
             if opt.lambda_identity > 0.0:  # only works when input and output images have the same number of channels
@@ -104,10 +101,9 @@ class CycleGANModel(BaseModel):
 
         The option 'direction' can be used to swap domain A and domain B.
         """
-        AtoB = self.opt.direction == 'AtoB'
-        self.real_A = input['A' if AtoB else 'B'].to(self.device)
-        self.real_B = input['B' if AtoB else 'A'].to(self.device)
-        self.image_paths = input['A_paths' if AtoB else 'B_paths']
+        self.real_A = input['A'].to(self.device)
+        self.real_B = input['B'].to(self.device)
+        self.image_paths = input['A_paths']
 
     def forward(self):
         """Run forward pass; called by both functions <optimize_parameters> and <test>."""
