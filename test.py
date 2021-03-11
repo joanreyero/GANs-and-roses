@@ -27,7 +27,6 @@ See training and test tips at: https://github.com/junyanz/pytorch-CycleGAN-and-p
 See frequently asked questions at: https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/docs/qa.md
 """
 import os
-from options.test_options import TestOptions
 from data import create_dataset
 from util.visualizer import save_images
 from util import html
@@ -37,7 +36,6 @@ import config_parser
 
 
 if __name__ == '__main__':
-    opt = TestOptions().parse()   # get training options
     config = config_parser.parse()
     # hard-code some parameters for test
     config.num_threads = 0   # test code only supports num_threads = 0
@@ -49,8 +47,6 @@ if __name__ == '__main__':
     config.phase = 'test'
     config.isTrain = False
     
-    opt.dataset_mode = 'single'
-    opt.num_threads = 0 
     dataset = create_dataset(config)  # create a dataset given opt.dataset_mode and other options
     model = CycleGANTest(config)      # create a model given opt.model and other options
     model.setup()               # regular setup: load and print networks; create schedulers

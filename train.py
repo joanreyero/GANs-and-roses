@@ -1,23 +1,14 @@
 import time
-from options.train_options import TrainOptions
 from data import create_dataset
 from models.cycle_gan_train_model import CycleGANTrain
 from util.visualizer import Visualizer
 import config_parser
 
 if __name__ == '__main__':
-
-
-    
-
-
-
-
     config = config_parser.parse()
 
-
     config.isTrain = True
-    opt = TrainOptions().parse()   # get training options
+
     dataset = create_dataset(config)  # create a dataset given opt.dataset_mode and other options
     dataset_size = len(dataset)    # get the number of images in the dataset.
     print('The number of training images = %d' % dataset_size)
