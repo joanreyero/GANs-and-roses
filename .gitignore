@@ -1,5 +1,4 @@
 pytorch-CycleGAN-and-pix2pix/
-datasets/
 .DS_Store
 debug*
 datasets/
