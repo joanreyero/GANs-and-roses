@@ -16,6 +16,7 @@ class SingleDataset(BaseDataset):
             opt (Option class) -- stores all the experiment flags; needs to be a subclass of BaseOptions
         """
         BaseDataset.__init__(self, config)
+        print('DATAROOT', config.dataroot)
         self.A_paths = sorted(make_dataset(config.dataroot, config.max_dataset_size))
         self.transform = get_transform(config, grayscale=False)
 

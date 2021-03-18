@@ -70,5 +70,5 @@ if __name__ == '__main__':
         if i % 5 == 0:  # save images to an HTML file
             print('processing (%04d)-th image... %s' % (i, img_path))
         # TODO Check removing aspect ratio is fine
-        save_images(webpage, visuals, img_path, width=config.display_winsize)
+        save_images(webpage, visuals, img_path, width=config.display_winsize, fake_only=True)
     webpage.save()  # save the HTML
