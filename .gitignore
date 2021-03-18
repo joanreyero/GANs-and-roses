@@ -1,6 +1,7 @@
 pytorch-CycleGAN-and-pix2pix/
 .DS_Store
 debug*
+datasets/
 checkpoints/
 results/
 build/
