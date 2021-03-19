@@ -23,6 +23,7 @@ class CycleGANTest():
 
         self.gpu_ids = config.gpu_ids
         self.device = torch.device('cuda:{}'.format(self.gpu_ids[0])) if self.gpu_ids else torch.device('cpu')  # get device name: CPU or GPU
+        print('DEVICE: ', torch.cuda.get_device_name(0))
 
         # specify the training losses you want to print out. The training/test scripts  will call <BaseModel.get_current_losses>
         self.loss_names = []
